@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container py-4">
+    <h1>Cargos (FBV)</h1>
+    <a class="btn btn-dark mb-3" href="{% url 'cargo_create_fbv' %}">Nuevo Cargo</a>
+    <table class="table">
+        <thead>
+            <tr><th>Nombre</th><th>Descripción</th><th></th></tr>
+        </thead>
+        <tbody>
+            {% for cargo in cargos %}
+            <tr>
+                <td>{{ cargo.nombre }}</td>
+                <td>{{ cargo.descripcion }}</td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" href="{% url 'cargo_update_fbv' cargo.id %}">Editar</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'cargo_delete_fbv' cargo.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

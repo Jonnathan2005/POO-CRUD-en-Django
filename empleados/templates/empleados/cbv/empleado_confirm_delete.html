@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container py-4">
+    <h1>¿Eliminar a "{{ object }}"?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Sí, eliminar</button>
+        <a class="btn btn-secondary" href="{% url 'empleado_list_cbv' %}">Cancelar</a>
+    </form>
+</main>
+{% endblock %}

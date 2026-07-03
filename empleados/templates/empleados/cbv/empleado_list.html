@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container py-4">
+    <h1>Empleados (CBV)</h1>
+    <a class="btn btn-dark mb-3" href="{% url 'empleado_create_cbv' %}">Nuevo Empleado</a>
+    <table class="table">
+        <thead>
+            <tr><th>Nombres</th><th>Apellidos</th><th>Correo</th><th>Sueldo</th><th>Fecha ingreso</th><th>Cargo</th><th></th></tr>
+        </thead>
+        <tbody>
+            {% for empleado in empleados %}
+            <tr>
+                <td>{{ empleado.nombres }}</td>
+                <td>{{ empleado.apellidos }}</td>
+                <td>{{ empleado.correo }}</td>
+                <td>{{ empleado.sueldo }}</td>
+                <td>{{ empleado.fecha_ingreso }}</td>
+                <td>{{ empleado.cargo }}</td>
+                <td>
+                    <a class="btn btn-sm btn-secondary" href="{% url 'empleado_update_cbv' empleado.id %}">Editar</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'empleado_delete_cbv' empleado.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

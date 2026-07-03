@@ -2,30 +2,43 @@
 
 {% block content %}
 
-<main class="container">
-    <div class="row">
-        <section class="col-md-4 offset-md-4 mt-5">
-            <form action="/signin/" method="POST" class="card card-body">
+<main class="d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 62px); background: linear-gradient(135deg, #f4f6f5 0%, #e7ece9 100%);">
+    <div class="container">
+        <div class="row justify-content-center">
+            <section class="col-11 col-sm-8 col-md-5 col-lg-4">
+                <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="text-center text-white py-4" style="background: linear-gradient(90deg, #1b3a2b 0%, #4b4f54 100%);">
+                        <div class="fs-1">&#128101;</div>
+                        <h1 class="h4 fw-bold mb-0">Bienvenido de nuevo</h1>
+                        <p class="mb-0 small opacity-75">Inicia sesión en EmpleadosApp</p>
+                    </div>
 
-                <h1 class="text-center">Signin</h1>
-                {{ error }}
+                    <form action="/signin/" method="POST" class="card-body p-4">
+                        {% csrf_token %}
 
-                {% csrf_token %}
-        
-                {{ error }}
-                {% csrf_token %}
-                
-                <div class="mb-3">
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" id="username" placeholder="Write your username" class="form-control">
+                        {% if error %}
+                        <div class="alert alert-danger py-2 small" role="alert">{{ error }}</div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="username" class="form-label fw-semibold">Usuario</label>
+                            <input type="text" name="username" id="username" placeholder="Escribe tu usuario" class="form-control form-control-lg" autofocus>
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="form-label fw-semibold">Contraseña</label>
+                            <input type="password" name="password" id="password" placeholder="Escribe tu contraseña" class="form-control form-control-lg">
+                        </div>
+                        <button class="btn btn-lg w-100 text-white fw-semibold" style="background: linear-gradient(90deg, #1b3a2b 0%, #4b4f54 100%);">
+                            Iniciar sesión
+                        </button>
+
+                        <p class="text-center text-muted mt-4 mb-0 small">
+                            ¿No tienes cuenta? <a href="/signup" class="fw-semibold text-decoration-none" style="color: #1b3a2b;">Regístrate</a>
+                        </p>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" id="password" placeholder="Write your password" class="form-control">
-                </div>
-                <button class="btn btn-primary">SignIn</button>
-            </form>
-        </section>
+            </section>
+        </div>
     </div>
 </main>
 
